@@ -1,15 +1,27 @@
 import { TaskTypes } from '../constants'
 
-export default (state = {}, action) => {
+const initState = {
+    authedUser: '',
+    tasks: []
+}
+
+export default (state = initState, action) => {
+
     switch(action.type) {
-        case TaskTypes.GET_TASKS:
-            return {
-                ...state
-            }
         case TaskTypes.ADD_TASK:
             return {
                 ...state,
-                ...action.task,
+                tasks: [
+                    ...state.tasks, 
+                    action.task
+                ]
+            }
+        case TaskTypes.SET_TASK:
+            return {
+                ...state,
+                tasks: state.tasks.map((task, id) => {
+                    return id === action.id ? action.task : task
+                })
             }
         default:
             return state
