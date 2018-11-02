@@ -1,0 +1,8 @@
+export const TaskTypes = {
+    ADD_TASK: 'ADD_TASK',
+    SET_TASK: 'SET_TASK',
+    REMOVE_TASK: 'REMOVE_TASK',
+    TOGGLE_TASK: 'TOGGLE_TASK',
+    SET_PRIORITY: 'SET_PRIORITY',
+    SET_DUE_DATE: 'SET_DUE_DATE'
+}
