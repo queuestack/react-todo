@@ -1,33 +1,36 @@
 import { TaskTypes } from '../constants'
 
+export const getTasks = () => {
+    type: TaskTypes.GET_TASKS
+}
 export const addTask = (task) => {
     type: TaskTypes.ADD_TASK,
     task
 }
 
-export const setTask = (id) => {
-    type: TaskTypes.ADD_TASK,
-    id
+export const setTask = (task) => {
+    type: TaskTypes.SET_TASK,
+    task
 }
 
-export const removeTask = (id) => {
+export const removeTask = (task) => {
     type: TaskTypes.REMOVE_TASK,
-    id
+    task
 }
 
-export const toggleTask = (id) => {
+export const toggleTask = (task) => {
     type: TaskTypes.TOGGLE_TASK,
-    id
+    task
 }
 
-export const setTaskPriority = (id, priority) => {
+export const setTaskPriority = (task, priority) => {
     tyep: TaskTypes.SET_TASK_PRIORITY,
-    id,
+    task,
     priority
 }
 
-export const setTaskDueDate = (id, date) => {
+export const setTaskDueDate = (task, date) => {
     type: TaskTypes.SET_TASK_DUE_DATE,
-    id,
+    task,
     date
 }
