@@ -6,8 +6,12 @@ const initState = {
 }
 
 export default (state = initState, action) => {
-
     switch(action.type) {
+        case TaskTypes.RECEIVE_TASK_DATA:
+            return {
+                ...state,
+                ...action.taskData
+            }
         case TaskTypes.ADD_TASK:
             return {
                 ...state,
@@ -44,7 +48,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 tasks: state.tasks.map((task, id) => {
-                    return id == action.id ? {
+                    return id === action.id ? {
                         ...task,
                         priority: action.priority
                     } : task
@@ -54,7 +58,7 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 tasks: state.tasks.map((task, id) => {
-                    return id == action.id ? {
+                    return id === action.id ? {
                         ...task,
                         dueDate: action.date
                     } : task

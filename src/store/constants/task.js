@@ -1,5 +1,5 @@
 export const TaskTypes = {
-    GET_TASKS: 'GET_TASKS',
+    RECEIVE_TASK_DATA: 'RECEIVE_TASK_DATA',
     ADD_TASK: 'ADD_TASK',
     SET_TASK: 'SET_TASK',
     REMOVE_TASK: 'REMOVE_TASK',

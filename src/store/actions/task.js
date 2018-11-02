@@ -1,5 +1,12 @@
 import { TaskTypes } from '../constants'
 
+export const receiveTaskData = (taskData) => {
+    return {
+        type: TaskTypes.RECEIVE_TASK_DATA,
+        taskData
+    }
+}
+
 export const addTask = (task) => {
     return {
         type: TaskTypes.ADD_TASK,

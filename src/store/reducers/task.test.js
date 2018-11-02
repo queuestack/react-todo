@@ -1,9 +1,31 @@
 import reducer from './task';
-import { addTask, setTask, removeTask, toggleTask, setTaskPriority, setTaskDueDate } from '../actions';
+import { addTask, setTask, removeTask, toggleTask, setTaskPriority, setTaskDueDate, receiveTaskData } from '../actions';
 import expect from 'expect';
 import { formatTask } from '../../utils/helpers';
 
 describe('task reducer', () => {
+  const taskData = {
+    authedUser: 'oxoxx',
+    tasks: [{
+        title: 'title1',
+        body: 'body1',
+        dueDate: 1541150030181,
+        priority: 'high',
+        done: false
+    }, {
+        title: 'title2',
+        body: 'body2',
+        dueDate: 1541150040181,
+        priority: 'middle',
+        done: true,
+    }, {
+        title: 'title3',
+        body: 'body3',
+        dueDate: 1551150040181,
+        priority: 'low',
+        done: false,            
+    }]
+  }
   const task1 = formatTask('1', '1', 1111, 'low', false)
   const task2 = formatTask('2', '2', 2222, 'middle', false)
   const toggledTask2 = formatTask('2', '2', 2222, 'middle', true)
@@ -25,6 +47,13 @@ describe('task reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(undefined, {})).toEqual(initState);
   });
+  it('should receive task data', () => {
+    expect(reducer(initState, receiveTaskData(taskData))).toEqual(
+      {
+        ...taskData
+      }
+    )
+  })
   it('should add task', () => {
     expect(reducer(initState, addTask(task1))).toEqual(
       {
