@@ -15,32 +15,32 @@ export const setTask = (task, id) => {
     }
 }
 
-export const removeTask = (task) => {
+export const removeTask = (id) => {
     return {
         type: TaskTypes.REMOVE_TASK,
-        task
+        id
     }
 }
 
-export const toggleTask = (task) => {
+export const toggleTask = (id) => {
     return {
         type: TaskTypes.TOGGLE_TASK,
-        task
+        id
     }
 }
 
-export const setTaskPriority = (task, priority) => {
+export const setTaskPriority = (id, priority) => {
     return {
         type: TaskTypes.SET_TASK_PRIORITY,
-        task,
+        id,
         priority
     }
 }
 
-export const setTaskDueDate = (task, date) => {
+export const setTaskDueDate = (id, date) => {
     return {
         type: TaskTypes.SET_TASK_DUE_DATE,
-        task,
+        id,
         date
     }
 }

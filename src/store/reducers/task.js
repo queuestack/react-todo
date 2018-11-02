@@ -23,6 +23,43 @@ export default (state = initState, action) => {
                     return id === action.id ? action.task : task
                 })
             }
+        case TaskTypes.REMOVE_TASK:
+            return {
+                ...state,
+                tasks: state.tasks.filter((task, id) => {
+                    return id !== action.id
+                })
+            }
+        case TaskTypes.TOGGLE_TASK:
+            return {
+                ...state,
+                tasks: state.tasks.map((task, id) => {
+                    return id === action.id ? {
+                        ...task,
+                        done: !task.done
+                    } : task
+                })
+            }
+        case TaskTypes.SET_TASK_PRIORITY:
+            return {
+                ...state,
+                tasks: state.tasks.map((task, id) => {
+                    return id == action.id ? {
+                        ...task,
+                        priority: action.priority
+                    } : task
+                })
+            }
+        case TaskTypes.SET_TASK_DUE_DATE:
+            return {
+                ...state,
+                tasks: state.tasks.map((task, id) => {
+                    return id == action.id ? {
+                        ...task,
+                        dueDate: action.date
+                    } : task
+                })
+            }
         default:
             return state
     }
