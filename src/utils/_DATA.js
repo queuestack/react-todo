@@ -11,13 +11,13 @@ const taskData = {
         body: 'body2',
         dueDate: undefined,
         priority: 'middle',
-        done: true,
+        done: false,
     }, {
         title: 'title3',
         body: 'body3',
         dueDate: 1551150040181,
         priority: 'low',
-        done: false,            
+        done: true,            
     }]
 }
 

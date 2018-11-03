@@ -6,7 +6,6 @@ import { toggleTask, removeTask, setTask, setTaskPriority, setTaskDueDate } from
 
 class TaskDetail extends Component {
     state = {
-        isClicked: false,
         title: '',
         body: '',
         priority: '',
@@ -91,9 +90,8 @@ class TaskDetail extends Component {
         this.setStateFromProps(nextProps)   
     }
     render() {
-        const { dueDate, done } = this.props.task
-        const { year, month, day, hour, minute, second } = formatDate(dueDate)
-        const { title, body, date, time, isClicked } = this.state
+        const { done } = this.props.task
+        const { title, body, date, time } = this.state
 
         return (
             <div>
