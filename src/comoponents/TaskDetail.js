@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { formatTask, formatDate, formatTime } from '../utils/helpers';
+import { formatTask, formatDate, formatTime, validateDate, validateTime } from '../utils/helpers';
 import { toggleTask, removeTask, setTask, setTaskPriority, setTaskDueDate } from '../store/actions';
 
 class TaskDetail extends Component {
@@ -42,15 +42,20 @@ class TaskDetail extends Component {
 
         dispatch(toggleTask(index))
     }
-    handleSetTask = () => {
+    handleSetTask = (event) => {
         const { index, dispatch } = this.props
         const { title, body, date, time } = this.state
         const { priority, done } = this.props.task
-        const dueDate = formatTime(date, time)
-        
-        const task = formatTask(title, body, dueDate, priority, done)
 
-        dispatch(setTask(task, index))
+        if (validateDate(date) && validateTime(time)) {
+            const dueDate = formatTime(date, time)
+        
+            const task = formatTask(title, body, dueDate, priority, done)
+    
+            dispatch(setTask(task, index))
+        } else {
+            // TODO: focus to date or time input box
+        }
     }
     handleSetPriority = (event) => {
         const { index, dispatch } = this.props
@@ -117,7 +122,7 @@ class TaskDetail extends Component {
                 </select>
                 <input
                     type="text"
-                    placeholder="yyyy.mm.dd"
+                    placeholder="yyyy/mm/dd"
                     value={date}
                     onChange={this.handleDateChange}
                     maxLength='10'
@@ -129,10 +134,21 @@ class TaskDetail extends Component {
                     onChange={this.handleTimeChange}
                     maxLength='5'
                 />
-                
-                <button onClick={this.handleToggleTask}> { done ? 'done' : 'todo' } </button>
-                <button onClick={this.handleRemoveTask}> Remove </button>
-                <button onClick={this.handleSetTask}> Save </button>
+                <input 
+                    type='button' 
+                    onClick={this.handleToggleTask} 
+                    value={ done ? 'done' : 'todo' } 
+                /> 
+                <input 
+                    type='button' 
+                    onClick={this.handleRemoveTask} 
+                    value='Remove' 
+                />
+                <input 
+                    type='button' 
+                    onClick={this.handleSetTask} 
+                    value='Save' 
+                />
             </div>
         )
     }
