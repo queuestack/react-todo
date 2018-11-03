@@ -2,10 +2,20 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Task from './Task'
+import TaskDetail from './TaskDetail'
 
 class Tasks extends Component {
+    state = {
+        clickedIndex: undefined
+    }
+    handleClickTask = (index) => {
+        this.setState({
+            clickedIndex: index
+        })
+    }
     render() {
         const { tasks } = this.props
+        const { clickedIndex } = this.state
 
         return (
             <div>
@@ -13,10 +23,17 @@ class Tasks extends Component {
                     return (
                         <Task 
                             key={task.title + task.dueDate}
-                            task={task}
                             index={i}
+                            handleClickTask={this.handleClickTask}
                         /> 
                     )})
+                }
+                {
+                    tasks[clickedIndex] && (
+                        <TaskDetail
+                            index={clickedIndex}
+                        />
+                    )
                 }
             </div>
         )

@@ -12,7 +12,7 @@ class Task extends Component {
         date: '',
         time: '',
     }
-    hanldeClick = () => {
+    handleClick = () => {
         this.setState({
             isClicked: !this.state.isClicked
         })
@@ -52,13 +52,11 @@ class Task extends Component {
         const { title, body, date, time } = this.state
         const { priority, done } = this.props.task
         const dueDate = formatTime(date, time)
-        console.log(date)
-        console.log(time)
-        console.log(dueDate)
         
         const task = formatTask(title, body, dueDate, priority, done)
 
         dispatch(setTask(task, index))
+        this.handleClick()
     }
     handleSetPriority = (event) => {
         const { index, dispatch } = this.props
@@ -88,52 +86,72 @@ class Task extends Component {
     render() {
         const { dueDate, priority, done } = this.props.task
         const { year, month, day, hour, minute, second } = formatDate(dueDate)
+        const { title, body, date, time, isClicked } = this.state
 
         return (
             <div>
                 <hr/>
-                <input 
-                    type="text" 
-                    value={this.state.title} 
-                    onChange={this.handleTitleChange} 
-                />
-                <input 
-                    type="text"
-                    value={this.state.body}
-                    onChange={this.handleBodyChange}
-                />
-                <select onChange={this.handleSetPriority}>
-                    <option value="high">high</option>
-                    <option value="middle">middle</option>
-                    <option value="low">low</option>
-                </select>
-                <div>{year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second}</div>
-                <input
-                    type="text"
-                    placeholder="yyyy.mm.dd"
-                    value={this.state.date}
-                    onChange={this.handleDateChange}
-                    maxLength='10'
-                />
-                <input
-                    type="text"
-                    placeholder="hh:mm"
-                    value={this.state.time}
-                    onChange={this.handleTimeChange}
-                    maxLength='5'
-                />
-                <div>{priority}</div>
-                <button onClick={this.handleToggleTask}> { done ? 'done' : 'todo' } </button>
-                <button onClick={this.handleRemoveTask}> Remove </button>
-                <button onClick={this.handleSetTask}> Save </button>
+                {
+                    isClicked ?
+                    (
+                        <div>
+                            <input 
+                                type="text" 
+                                value={title} 
+                                onChange={this.handleTitleChange} 
+                            />
+                            <input 
+                                type="text"
+                                value={body}
+                                onChange={this.handleBodyChange}
+                            />
+                            <select onChange={this.handleSetPriority}>
+                                <option value="high">high</option>
+                                <option value="middle">middle</option>
+                                <option value="low">low</option>
+                            </select>
+                            
+                            <input
+                                type="text"
+                                placeholder="yyyy.mm.dd"
+                                value={date}
+                                onChange={this.handleDateChange}
+                                maxLength='10'
+                            />
+                            <input
+                                type="text"
+                                placeholder="hh:mm"
+                                value={time}
+                                onChange={this.handleTimeChange}
+                                maxLength='5'
+                            />
+                            
+                            <button onClick={this.handleToggleTask}> { done ? 'done' : 'todo' } </button>
+                            <button onClick={this.handleRemoveTask}> Remove </button>
+                            <button onClick={this.handleSetTask}> Save </button>
+                        </div>
+                    ) : (
+                        <div onClick={() => this.props.handleClickTask(this.props.index)}>
+                            <div>{this.props.task.title}</div>
+                            <div>{this.props.task.body}</div>
+                            <div>{dueDate ? year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second : 'Set due date'}</div>
+                            <div>{done ? 'done' : 'todo'}</div>
+                            <div>{priority}</div>
+                        </div>                        
+                    )
+                }
                 <hr/>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = ({ task }, props) => {
+    const { tasks } = task
+    const { index } = props
+
     return {
+        task: tasks[index],
         ...props
     }
 }
