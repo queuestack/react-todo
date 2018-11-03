@@ -1,33 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 import Task from './Task'
 import TaskDetail from './TaskDetail'
+import AddTask from './AddTask'
 
-class Tasks extends Component {
-    render() {
-        const { clickedIndex, tasks } = this.props
+const Tasks = (props) => {
+    const { clickedIndex, tasks } = props
 
-        return (
-            <div>
-                {tasks.map((task, i) => {
-                    return (
-                        <Task 
-                            key={task.title + task.dueDate}
-                            index={i}
-                        /> 
-                    )})
-                }
-                {
-                    tasks[clickedIndex] && (
-                        <TaskDetail
-                            index={clickedIndex}
-                        />
-                    )
-                }
-            </div>
-        )
-    }
+    return (
+        <div>
+            <AddTask />
+            {tasks.map((task, i) => {
+                return (
+                    <Task 
+                        key={task.title + task.dueDate}
+                        index={i}
+                    /> 
+                )})
+            }
+            {
+                tasks[clickedIndex] && (
+                    <TaskDetail
+                        index={clickedIndex}
+                    />
+                )
+            }
+        </div>
+    )
 }
 
 const mapStateToProps = ({ task }, props) => {

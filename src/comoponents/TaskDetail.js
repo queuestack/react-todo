@@ -81,7 +81,12 @@ class TaskDetail extends Component {
                 date: year + "/" + month + "/" + day,
                 time: hour + ":" + minute
             })
-        }   
+        } else {
+            this.setState({
+                date: '',
+                time: ''
+            })
+        }
     }
     componentDidMount() {
         this.setStateFromProps(this.props)
