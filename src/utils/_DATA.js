@@ -9,7 +9,7 @@ const taskData = {
     }, {
         title: 'title2',
         body: 'body2',
-        dueDate: 1541150040181,
+        dueDate: undefined,
         priority: 'middle',
         done: true,
     }, {
