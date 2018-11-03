@@ -16,21 +16,21 @@ describe('task reducer', () => {
         title: 'title2',
         body: 'body2',
         dueDate: 1541150040181,
-        priority: 'middle',
+        priority: 'normal',
         done: true,
     }, {
         title: 'title3',
         body: 'body3',
         dueDate: 1551150040181,
-        priority: 'low',
+        priority: 'normal',
         done: false,            
     }]
   }
-  const task1 = formatTask('1', '1', 1111, 'low', false)
-  const task2 = formatTask('2', '2', 2222, 'middle', false)
-  const toggledTask2 = formatTask('2', '2', 2222, 'middle', true)
+  const task1 = formatTask('1', '1', 1111, 'normal', false)
+  const task2 = formatTask('2', '2', 2222, 'normal', false)
+  const toggledTask2 = formatTask('2', '2', 2222, 'normal', true)
   const highPriTask2 = formatTask('2', '2', 2222, 'high', false)
-  const dueDateTask2 = formatTask('2', '2', 7777, 'middle', false)
+  const dueDateTask2 = formatTask('2', '2', 7777, 'normal', false)
   const task3 = formatTask('3', '3', 3333, 'high', false)
   const initState = {
     authedUser: '',

@@ -15,8 +15,6 @@ const Task = (props) => {
             {
                 <div onClick={() => dispatch(clickTask(index))}>
                     <div>{title}</div>
-                    <div>{body}</div>
-                    <div>{dueDate ? year + "/" + month + "/" + day + " " + hour + ":" + minute + ":" + second : 'Set due date'}</div>
                     <div>{done ? 'done' : 'todo'}</div>
                     <div>{priority}</div>
                 </div>                        

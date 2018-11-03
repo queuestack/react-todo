@@ -117,8 +117,7 @@ class TaskDetail extends Component {
                 />
                 <select onChange={this.handleSetPriority}>
                     <option value="high">high</option>
-                    <option value="middle">middle</option>
-                    <option value="low">low</option>
+                    <option value="normal">normal</option>
                 </select>
                 <input
                     type="text"

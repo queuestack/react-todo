@@ -10,13 +10,13 @@ const taskData = {
         title: 'title2',
         body: 'body2',
         dueDate: undefined,
-        priority: 'middle',
+        priority: 'normal',
         done: false,
     }, {
         title: 'title3',
         body: 'body3',
         dueDate: 1551150040181,
-        priority: 'low',
+        priority: 'normal',
         done: true,            
     }]
 }
