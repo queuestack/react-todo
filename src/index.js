@@ -7,6 +7,8 @@ import { Provider } from 'react-redux'
 import reducer from './store/reducers'
 import middleware from './store/middleware'
 
+import 'semantic-ui-css/semantic.min.css';
+
 const store = createStore(reducer, middleware)
 
 ReactDOM.render(

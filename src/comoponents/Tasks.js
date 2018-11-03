@@ -9,23 +9,32 @@ const Tasks = (props) => {
     const { clickedIndex, tasks } = props
 
     return (
-        <div>
-            <AddTask />
-            {tasks.map((task, i) => {
-                return (
-                    <Task 
-                        key={task.title + task.dueDate}
-                        index={i}
-                    /> 
-                )})
-            }
-            {
-                tasks[clickedIndex] && (
-                    <TaskDetail
-                        index={clickedIndex}
-                    />
-                )
-            }
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: 'row'
+            }}
+        >
+            <div>
+                <AddTask />
+                {tasks.map((task, i) => {
+                    return (
+                        <Task 
+                            key={task.title + task.dueDate}
+                            index={i}
+                        /> 
+                    )})
+                }
+            </div>
+            <div>
+                {
+                    tasks[clickedIndex] && (
+                        <TaskDetail
+                            index={clickedIndex}
+                        />
+                    )
+                }
+            </div>
         </div>
     )
 }
