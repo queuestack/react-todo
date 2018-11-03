@@ -36,6 +36,13 @@ export const toggleTask = (id) => {
     }
 }
 
+export const clickTask = (id) => {
+    return {
+        type: TaskTypes.CLICK_TASK,
+        id
+    }
+}
+
 export const setTaskPriority = (id, priority) => {
     return {
         type: TaskTypes.SET_TASK_PRIORITY,

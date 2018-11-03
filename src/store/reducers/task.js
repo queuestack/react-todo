@@ -2,6 +2,7 @@ import { TaskTypes } from '../constants'
 
 const initState = {
     authedUser: '',
+    clickedIndex: undefined,
     tasks: []
 }
 
@@ -15,9 +16,10 @@ export default (state = initState, action) => {
         case TaskTypes.ADD_TASK:
             return {
                 ...state,
+                clickedIndex: 0,
                 tasks: [
+                    action.task,
                     ...state.tasks, 
-                    action.task
                 ]
             }
         case TaskTypes.SET_TASK:
@@ -30,6 +32,7 @@ export default (state = initState, action) => {
         case TaskTypes.REMOVE_TASK:
             return {
                 ...state,
+                clickedIndex: undefined,
                 tasks: state.tasks.filter((task, id) => {
                     return id !== action.id
                 })
@@ -47,6 +50,7 @@ export default (state = initState, action) => {
             if (nextDone) {
                 return {
                     ...state,
+                    clickedIndex: tasks.length -1,
                     tasks: [
                         ...restTasks,
                         toggledTask
@@ -55,12 +59,18 @@ export default (state = initState, action) => {
             } else {
                 return {
                     ...state,
+                    clickedIndex: 0,
                     tasks: [
                         toggledTask,
                         ...restTasks
                     ]
                 }
             }
+        case TaskTypes.CLICK_TASK:
+            return {
+                ...state,
+                clickedIndex: action.id
+            }            
         case TaskTypes.SET_TASK_PRIORITY:
             return {
                 ...state,

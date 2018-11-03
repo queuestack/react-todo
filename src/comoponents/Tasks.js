@@ -5,17 +5,8 @@ import Task from './Task'
 import TaskDetail from './TaskDetail'
 
 class Tasks extends Component {
-    state = {
-        clickedIndex: undefined
-    }
-    handleClickTask = (index) => {
-        this.setState({
-            clickedIndex: index
-        })
-    }
     render() {
-        const { tasks } = this.props
-        const { clickedIndex } = this.state
+        const { clickedIndex, tasks } = this.props
 
         return (
             <div>
@@ -24,7 +15,6 @@ class Tasks extends Component {
                         <Task 
                             key={task.title + task.dueDate}
                             index={i}
-                            handleClickTask={this.handleClickTask}
                         /> 
                     )})
                 }
@@ -41,10 +31,11 @@ class Tasks extends Component {
 }
 
 const mapStateToProps = ({ task }, props) => {
-    const { authedUser, tasks } = task
+    const { authedUser, clickedIndex, tasks } = task
 
     return {
         authedUser,
+        clickedIndex,
         tasks
     }
 }

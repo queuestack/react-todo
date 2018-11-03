@@ -110,7 +110,6 @@ class TaskDetail extends Component {
                     <option value="middle">middle</option>
                     <option value="low">low</option>
                 </select>
-                
                 <input
                     type="text"
                     placeholder="yyyy.mm.dd"
