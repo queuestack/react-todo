@@ -12,14 +12,14 @@ React를 활용한 Todo List
 * [✓] TODO 항목을 삭제할 수 있다.
 
 ## Additional Features
-* [✓] Unit Test : 
+* [✓] Unit Test : store/reducers에 대한 Unit Test 실행
 * [✘] Integration Test 
-* [✓] AWS등 서버에 배포되어 있어서 기능을 직접 사용해 볼 수 있음 (https://queuestack.github.io/react-todo/)
+* [✓] AWS등 서버에 배포되어 있어서 기능을 직접 사용해 볼 수 있음 : https://queuestack.github.io/react-todo/
 
 ## Procedure
-'''
+```sh
 1. git clone https://github.com/queuestack/react-todo.git
 2. cd react-todo
 3. yarn
 4. yarn run start
-'''
+```
