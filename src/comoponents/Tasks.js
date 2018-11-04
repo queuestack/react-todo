@@ -16,7 +16,6 @@ const Tasks = (props) => {
             }}
         >
             <div>
-                <AddTask />
                 {tasks.map((task, i) => {
                     return (
                         <Task 
@@ -25,6 +24,7 @@ const Tasks = (props) => {
                         /> 
                     )})
                 }
+                <AddTask />
             </div>
             <div>
                 {

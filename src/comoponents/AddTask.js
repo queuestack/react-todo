@@ -1,54 +1,51 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 
 import { addTask } from '../store/actions'
 import { formatTask } from '../utils/helpers';
 
+const TaskInput = styled.input`
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+`
+
 class AddTask extends Component {
     state = {
-        title: '',
-        body: ''
+        title: ''
     }
     handleTitleChange = (event) => {
         this.setState({
             title: event.target.value
         })
     }
-    handleBodyChange = (event) => {
-        this.setState({
-            body: event.target.value
-        })
-    }
     handleAddBtn = () => {
         const { dispatch } = this.props
-        const { title, body } = this.state
-        const task = formatTask(title, body, undefined, 'middle', false)
+        const { title } = this.state
+        const task = formatTask(title, undefined, undefined, 'normal', false)
 
-        dispatch(addTask(task))
+        if (title !== '') {
+            dispatch(addTask(task))
 
-        this.setState({
-            title: '',
-            body: ''
-        })
+            this.setState({
+                title: '',
+                body: ''
+            })
+        }
     }
     render() {
         return (
             <div>
-                <input 
+                <TaskInput 
                     type="text"
                     value={this.state.title}
-                    placeholder="Title"
+                    placeholder="Add TODO here!"
                     onChange={this.handleTitleChange}
                 />
-                <input 
-                    type="text"
-                    value={this.state.body}
-                    placeholder="Body"
-                    onChange={this.handleBodyChange}
-                />
-                <input
-                    type="button"
-                    value='Add'
+                <i 
+                    class="fas fa-arrow-circle-up fa-lg"
+                    style={{margin: '5px'}}
                     onClick={this.handleAddBtn}
                 />
             </div>
