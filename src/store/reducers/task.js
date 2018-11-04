@@ -14,6 +14,7 @@ export default (state = initState, action) => {
                 ...action.taskData
             }
         case TaskTypes.ADD_TASK:
+            console.log(state)
             return {
                 ...state,
                 clickedIndex: 0,

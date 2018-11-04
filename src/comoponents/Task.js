@@ -36,7 +36,7 @@ const Task = (props) => {
             ? 
             <DoneTask>
                 <i 
-                    class="far fa-check-square" 
+                    className="far fa-check-square" 
                     style={{margin: '5px'}}
                     onClick={() => dispatch(toggleTask(index))} 
                 />
@@ -44,7 +44,7 @@ const Task = (props) => {
                     {title}
                 </span>
                 <i 
-                    class="far fa-trash-alt" 
+                    className="far fa-trash-alt" 
                     style={{margin: '5px', float: 'right'}}
                     onClick={() => dispatch(removeTask(index))}
                 />
@@ -52,7 +52,7 @@ const Task = (props) => {
             : 
             <TodoTask>
                 <i 
-                    class="far fa-square" 
+                    className="far fa-square" 
                     style={{margin: '5px'}}
                     onClick={() => dispatch(toggleTask(index))} 
                 />

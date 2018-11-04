@@ -2,7 +2,7 @@ const taskData = {
     authedUser: 'oxoxx',
     tasks: [{
         title: 'title1',
-        body: 'body1',
+        body: undefined,
         dueDate: 1541150030181,
         priority: 'high',
         done: false

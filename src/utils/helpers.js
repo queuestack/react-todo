@@ -37,6 +37,9 @@ export const validateDate = (date) => {
     const dateRegex = /^\d{4}[./]\d{1,2}[./]\d{1,2}$/
     const regs = date.match(dateRegex)
 
+    if(date === '')
+        return false
+
     if(regs) {
         const [ year, month, day ] = date.split(/[./]/)
 
@@ -66,6 +69,9 @@ export const validateTime = (time) => {
     const timeRegex = /^\d{1,2}:\d{2}([ap]m)?$/
     const regs = time.match(timeRegex)
 
+    if(time === '')
+        return false
+        
     if(regs) {
         const [ hour, minute ] = time.split(/:/)
 

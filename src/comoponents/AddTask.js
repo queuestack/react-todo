@@ -44,7 +44,7 @@ class AddTask extends Component {
                     onChange={this.handleTitleChange}
                 />
                 <i 
-                    class="fas fa-arrow-circle-up fa-lg"
+                    className="fas fa-arrow-circle-up fa-lg"
                     style={{margin: '5px'}}
                     onClick={this.handleAddBtn}
                 />
