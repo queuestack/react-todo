@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { formatTask, formatDate, formatTime, validateDate, validateTime } from '../utils/helpers';
-import { toggleTask, removeTask, setTask, setTaskPriority, setTaskDueDate } from '../store/actions';
+import { setTask, setTaskPriority, setTaskDueDate } from '../store/actions';
 
 class TaskDetail extends Component {
     state = {
@@ -31,16 +31,6 @@ class TaskDetail extends Component {
         this.setState({
             time: event.target.value
         })
-    }
-    handleRemoveTask = () => {
-        const { index, dispatch } = this.props
-
-        dispatch(removeTask(index))
-    }
-    handleToggleTask = () => {
-        const { index, dispatch } = this.props
-
-        dispatch(toggleTask(index))
     }
     handleSetTask = (event) => {
         const { index, dispatch } = this.props
@@ -100,7 +90,6 @@ class TaskDetail extends Component {
         this.setStateFromProps(nextProps)   
     }
     render() {
-        const { done } = this.props.task
         const { title, body, date, time } = this.state
 
         return (
@@ -132,16 +121,6 @@ class TaskDetail extends Component {
                     value={time}
                     onChange={this.handleTimeChange}
                     maxLength='5'
-                />
-                <input 
-                    type='button' 
-                    onClick={this.handleToggleTask} 
-                    value={ done ? 'done' : 'todo' } 
-                /> 
-                <input 
-                    type='button' 
-                    onClick={this.handleRemoveTask} 
-                    value='Remove' 
                 />
                 <input 
                     type='button' 
