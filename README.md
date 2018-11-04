@@ -1,6 +1,14 @@
 # React Todo
 React를 활용한 Todo List
 
+## Screenshot
+![TODO](/screenshots/main.png "TODO")
+TODO List와 TODO Detail로 이루어져 있다.
+TODO List에서는 새로운 할 일을 추가할 수 있다.
+추가된 할 일은 목록 형태로 볼 수 있고, 완료 처리 그리고 삭제를 할 수 있다.
+우선순위가 높은 일에 대해서는 빨간색으로 표시가 된다.
+TODO Detail에서는 내용, 마감 기한 그리고 우선 순위를 정할 수 있다.
+
 ## Features
 * [✓] 새로운 TODO(제목 + 내용)를 작성한다
 * [✓] 사용자의 선택에 의해 TODO에는 마감 기한을 넣을 수 있다.
