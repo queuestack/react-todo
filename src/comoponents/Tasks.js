@@ -24,6 +24,7 @@ const Tasks = (props) => {
     return (
         <TodoContainer>
             <div>
+                { tasks.length ?
                 <TodoList>
                     <h1
                         style={{textAlign: 'center'}}
@@ -37,7 +38,8 @@ const Tasks = (props) => {
                         )})
                     }
                     <AddTask />
-                </TodoList>
+                </TodoList> : null
+            }
             </div>
             <div>
                 {
