@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
 import task from './task'
-import authReducer from './authReducer'
+import auth from './auth'
 
 export default combineReducers({
     task,
-    auth: authReducer
+    auth
 })

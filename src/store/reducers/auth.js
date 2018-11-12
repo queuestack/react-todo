@@ -1,10 +1,9 @@
 import { AuthTypes } from '../constants'
 
-export default function(state = {}, action) {
-    console.log(action)
+export default function(state = null, action) {
     switch(action.type) {
         case AuthTypes.FETCH_USER:
-            return state
+            return action.payload || false
         default:
             return state
     }
