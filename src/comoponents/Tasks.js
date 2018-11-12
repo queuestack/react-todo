@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Task from './Task'
 import TaskDetail from './TaskDetail'
 import AddTask from './AddTask'
+import Auth from './Auth';
 
 const TodoContainer = styled.div`
     display: flex;
@@ -24,6 +25,7 @@ const Tasks = (props) => {
     return (
         <TodoContainer>
             <div>
+                <Auth />
                 { tasks.length ?
                 <TodoList>
                     <h1
