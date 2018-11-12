@@ -31,3 +31,7 @@ TODO Detail에서는 내용, 마감 기한 그리고 우선 순위를 정할 수
 3. yarn
 4. yarn run start
 ```
+
+## ETC
+1. react-todo-with-server : https://github.com/queuestack/react-todo-with-server
+passport.js를 활용해 로그인 기능 제공
